@@ -9,3 +9,10 @@ body {
 .dark body {
   @apply bg-[#0B1220] text-slate-100;
 }
+
+.dark header{
+  @apply bg-[#0B1220] text-slate-100;
+}
+.dark footer{
+  @apply bg-[#0B1220] text-slate-100;
+}
