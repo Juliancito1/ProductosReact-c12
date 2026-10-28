@@ -1,5 +1,15 @@
+import { ProductCards } from "../components/ProductCards";
+
 export const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <section className="mx-auto w-full max-w-7xl px-4 py-8">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-slate-700">Nuestros productos</h1>
+        <p className="text-lg text-slate-600">
+          Descubrí algunos de nuestros productos más populares.
+        </p>
+      </div>
+      <ProductCards />
+    </section>
+  );
+};
