@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { NavLink } from "react-router";
 import { ThemeContext } from "../context/ThemeContext";
+import { AuthContext } from "../context/AuthContext";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const themeContext = useContext(ThemeContext);
+  const auth = useContext(AuthContext);
 
   return (
     <header className="bg-slate-50">
@@ -98,13 +100,31 @@ export const Navbar = () => {
           >
             Inicio
           </NavLink>
-          <NavLink
-            className="hover:border-b-2 w-max border-btransparent hover:border-b-blue-500 hover:text-blue-600"
-            to="/login"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Iniciar Sesión
-          </NavLink>
+          {auth?.user ? (
+            <>
+              <span className="max-w-48 truncate text-sm text-slate-600 dark:text-slate-300">
+                Hola "{auth.user.name}"
+              </span>
+              <button
+                type="button"
+                className="w-max text-slate-700 hover:text-blue-600 dark:text-slate-200"
+                onClick={() => {
+                  auth.logout();
+                  setIsMenuOpen(false);
+                }}
+              >
+                Cerrar sesión
+              </button>
+            </>
+          ) : (
+            <NavLink
+              className="w-max border-b-transparent hover:border-b-2 hover:border-b-blue-500 hover:text-blue-600"
+              to="/login"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Iniciar Sesión
+            </NavLink>
+          )}
         </div>
       </nav>
     </header>
