@@ -1,1 +1,11 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  @apply bg-white text-slate-900 transition-colors;
+}
+
+.dark body {
+  @apply bg-[#0B1220] text-slate-100;
+}
